@@ -12,5 +12,7 @@ internal static class OrganizationsEndpoints
 
         group
             .MapEndpoint<CreateOrganizationEndpoint>();
+        group
+            .MapEndpoint<UpdateOrganizationEndpoint>();
     }
 }

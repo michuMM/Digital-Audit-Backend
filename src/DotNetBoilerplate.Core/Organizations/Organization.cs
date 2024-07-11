@@ -34,4 +34,12 @@ public class Organization
             CreatedAt = now
         };
     }
+
+    public void Update(string name, bool nameIsUnique)
+    {
+        if (!nameIsUnique)
+            throw new OrganizationNameIsNotUniqueException();
+
+        Name = name;
+    }
 }
