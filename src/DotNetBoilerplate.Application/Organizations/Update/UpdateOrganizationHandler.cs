@@ -13,7 +13,7 @@ internal sealed class UpdateOrganizationHandler(
     public async Task HandleAsync(UpdateOrganizationCommand command)
     {
         var organization = await organizationsRepository.GetByIdAsync(command.Id);
-        if (organization == null)
+        if (organization is null)
         {
             throw new OrganizationNotFoundException();
         }
