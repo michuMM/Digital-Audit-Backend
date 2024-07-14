@@ -26,16 +26,9 @@ internal sealed class UpdateOrganizationEndpoint : IEndpoint
     )
     {
         var command = new UpdateOrganizationCommand(id, request.Name);
-
-        try
-        {
-            await commandDispatcher.DispatchAsync<UpdateOrganizationCommand>(command, ct);
-            return TypedResults.Ok(new Response(id));
-        }
-        catch (OrganizationNotFoundException)
-        {
-            return TypedResults.NotFound();
-        }
+     
+        await commandDispatcher.DispatchAsync<UpdateOrganizationCommand>(command, ct);
+        return TypedResults.Ok(new Response(id));        
     }
 
     internal sealed record Response(

@@ -10,7 +10,7 @@ public class Organization
 
     public Guid Id { get; private set; }
 
-    public string Name { get; private set; }
+    public string Name { get; set; } //zmiana na public set, bo UpdateAsync musi móc zmieniać nazwe
 
     public Guid OwnerId { get; private set; }
 

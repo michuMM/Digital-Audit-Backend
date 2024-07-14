@@ -14,7 +14,7 @@ internal sealed class CreateOrganizationHandler(
     public async Task<Guid> HandleAsync(CreateOrganizationCommand command)
     {
         var isNameUnique =
-            await organizationsRepository.IsOrganizationNameUniqueAsync(command.Name);
+            await organizationsRepository.IsOrganizationNameUniqueAsync(command.Name, Guid.Empty);
 
         var organization = Organization.Create(
             command.Name,

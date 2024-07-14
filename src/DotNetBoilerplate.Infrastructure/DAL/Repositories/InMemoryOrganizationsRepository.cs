@@ -23,7 +23,16 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
 
     public Task UpdateAsync(Organization organization)
     {
-        throw new NotImplementedException();
+        var existingOrganization = organizations.FirstOrDefault(x => x.Id == organization.Id);
+
+        if (existingOrganization == null)
+        {
+            throw new InvalidOperationException("Organization not found");
+        }
+
+        existingOrganization.Name = organization.Name;        
+
+        return Task.CompletedTask;
     }
 
     public Task DeleteAsync(Organization organization)
@@ -31,9 +40,11 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> IsOrganizationNameUniqueAsync(string name)
+    public Task<bool> IsOrganizationNameUniqueAsync(string name, Guid id)
     {
-        var isNameUnique = organizations.All(x => x.Name != name);
+        var isNameUnique = organizations
+            .Where(x => x.Id != id)
+            .All(x => x.Name != name);
 
         return Task.FromResult(isNameUnique);
     }

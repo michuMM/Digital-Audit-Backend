@@ -18,7 +18,7 @@ internal sealed class UpdateOrganizationHandler(
             throw new OrganizationNotFoundException();
         }
 
-        var isNameUnique = await organizationsRepository.IsOrganizationNameUniqueAsync(command.Name);
+        var isNameUnique = await organizationsRepository.IsOrganizationNameUniqueAsync(command.Name, command.Id);
 
         organization.Update(command.Name, isNameUnique);
 
