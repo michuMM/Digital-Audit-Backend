@@ -2,5 +2,5 @@
 
 namespace DotNetBoilerplate.Core.Organizations.Exceptions;
 
-public sealed class OrganizationNotFoundException() : CustomException("Organization name is not unique.");
+public sealed class OrganizationNotFoundException() : CustomException("Organization not found.");
 
