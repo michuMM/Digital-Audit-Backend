@@ -13,7 +13,8 @@ internal sealed class AddDeviceEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
     {
-        app.MapPost("", Handle)          
+        app.MapPost("", Handle)
+            .RequireAuthorization()
             .WithSummary("Add device");
     }
 

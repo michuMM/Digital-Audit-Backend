@@ -21,9 +21,18 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         return Task.CompletedTask;
     }
 
-    public Task UpdateAsync(Device device)
+    public Task RelocateAsync(Device device)
     {
-        throw new NotImplementedException();
+        var existingDevice = devices.FirstOrDefault(x => x.Id == device.Id);
+
+        if (existingDevice == null)
+        {
+            throw new InvalidOperationException("Device not found");
+        }
+
+        existingDevice.Localization = device.Localization;
+
+        return Task.CompletedTask;
     }
 
     public Task DeleteAsync(Device device)
