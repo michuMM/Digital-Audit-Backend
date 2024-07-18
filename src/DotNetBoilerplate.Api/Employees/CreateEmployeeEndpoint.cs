@@ -14,16 +14,17 @@ internal sealed class CreateEmployeeEndpoint : IEndpoint
     {
         app.MapPost("", Handle)
             .RequireAuthorization()
-            .WithSummary("Create organization");
+            .WithSummary("Create employee");
     }
 
     private static async Task<Ok<Response>> Handle(
         [FromBody] Request request,
+        [FromRoute] Guid OrganizationId,
         [FromServices] ICommandDispatcher commandDispatcher,
         CancellationToken ct
     )
     {
-        var command = new CreateEmployeeCommand(request.First_name, request.Last_name, request.Email, request.Phone);
+        var command = new CreateEmployeeCommand(request.OrganizationId, request.FirstName, request.LastName, request.Email, request.Phone);
 
         var result = await commandDispatcher.DispatchAsync<CreateEmployeeCommand, Guid>(command, ct);
 
@@ -36,9 +37,11 @@ internal sealed class CreateEmployeeEndpoint : IEndpoint
 
     private sealed class Request
     {
-        [Required] public string First_name { get; init; }
+        [Required] public Guid OrganizationId { get; init; }
 
-        [Required] public string Last_name { get; init; }
+        [Required] public string FirstName { get; init; }
+
+        [Required] public string LastName { get; init; }
 
         [Required] public string Email { get; init; }
 

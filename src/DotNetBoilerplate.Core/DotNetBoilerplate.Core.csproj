@@ -22,9 +22,5 @@
 
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Employees\Exceptions\" />
-    </ItemGroup>
-
 
 </Project>
