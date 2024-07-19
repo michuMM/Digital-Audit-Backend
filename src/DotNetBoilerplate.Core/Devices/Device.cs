@@ -50,5 +50,5 @@ public class Device
     public void Relocate(string localization)
     {        
         Localization = localization;
-    }
+    }    
 }

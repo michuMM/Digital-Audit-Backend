@@ -14,6 +14,12 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         return Task.FromResult(device);
     }
 
+    public Task<IEnumerable<Device>> GetDevicesByOrganizationIdAsync(Guid organizationId)
+    {
+        var devicesInOrganization = devices.Where(d => d.OrganizationId == organizationId);
+        return Task.FromResult(devicesInOrganization);
+    } 
+
     public Task AddAsync(Device device)
     {
         devices.Add(device);
