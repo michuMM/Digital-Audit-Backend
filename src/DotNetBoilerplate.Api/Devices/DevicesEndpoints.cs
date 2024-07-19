@@ -2,7 +2,7 @@
 
 internal static class DevicesEndpoints
 {
-    public const string BasePath = "devices";
+    public const string BasePath = "/organizations/{organizationId}/devices";
     public const string Tags = "Devices";
 
     public static void MapDevicesEndpoints(this WebApplication app)

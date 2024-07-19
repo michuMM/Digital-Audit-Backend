@@ -1,6 +1,6 @@
 ﻿namespace DotNetBoilerplate.Core.Devices;
 
-public class Device
+public sealed class Device
 {
     private Device()
     {
@@ -24,24 +24,24 @@ public class Device
 
     public static Device Add(
         string name,
-        Guid OrganizationId,
-        Guid CategoryId,
-        string SerialNumber,
-        DateTimeOffset DateOfPurchase,
-        String Localization,
-        String Status
+        Guid organizationId,
+        Guid categoryId,
+        string serialNumber,
+        DateTimeOffset dateOfPurchase,
+        String localization,
+        String status
     )
     {     
         return new Device
         {
             Id = Guid.NewGuid(),
             Name = name,
-            OrganizationId = OrganizationId,
-            CategoryId= CategoryId,
-            SerialNumber = SerialNumber,
-            DateOfPurchase = DateOfPurchase,
-            Localization = Localization,
-            Status = Status
+            OrganizationId = organizationId,
+            CategoryId= categoryId,
+            SerialNumber = serialNumber,
+            DateOfPurchase = dateOfPurchase,
+            Localization = localization,
+            Status = status
         };
     }
 }

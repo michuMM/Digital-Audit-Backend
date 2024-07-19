@@ -10,5 +10,4 @@ public sealed record AddDeviceCommand(
     DateTimeOffset DateOfPurchase,
     String Localization,
     String Status
-
     ) : ICommand<Guid>;
