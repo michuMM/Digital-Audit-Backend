@@ -5,7 +5,7 @@ public interface IDevicesRepository
 
     Task AddAsync(Device device);
 
-    Task RelocateAsync(Device device);
+    Task UpdateAsync(Device device);
 
     Task DeleteAsync(Device device);
 }

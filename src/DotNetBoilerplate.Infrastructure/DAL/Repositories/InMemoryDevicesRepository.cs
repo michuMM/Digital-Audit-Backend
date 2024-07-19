@@ -21,7 +21,7 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         return Task.CompletedTask;
     }
 
-    public Task RelocateAsync(Device device)
+    public Task UpdateAsync(Device device)
     {
         var existingDevice = devices.FirstOrDefault(x => x.Id == device.Id);
 

@@ -15,11 +15,11 @@ internal sealed class RelocateDeviceHandler(
         var device = await devicesRepository.GetByIdAsync(command.Id);
         if (device is null)
         {
-            throw new DeviceNotFoundException();
+            throw new DeviceNotFoundException(command.Id);
         }       
 
         device.Relocate(command.Localization);
 
-        await devicesRepository.RelocateAsync(device);
+        await devicesRepository.UpdateAsync(device);
     }
 }
