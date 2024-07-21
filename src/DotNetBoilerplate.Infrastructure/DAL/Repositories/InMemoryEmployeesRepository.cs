@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.Employees;
+using DotNetBoilerplate.Core.Users;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -12,6 +13,11 @@ internal sealed class InMemoryEmployeesRepository : IEmployeesRepository
         var employee = employees.Find(x => x.Id == id);
 
         return Task.FromResult(employee);
+    }
+
+    public Task<List<Employee>> GetAllAsync()
+    {
+        return Task.FromResult(employees);
     }
 
     public Task AddAsync(Employee employee)
@@ -33,11 +39,19 @@ internal sealed class InMemoryEmployeesRepository : IEmployeesRepository
 
     public Task<bool> IsEmployeeEmailUniqueAsync(string email, Guid id)
     {
-        throw new NotImplementedException();
+        var isEmailUnique = employees
+            .Where(x => x.Id !=  id)
+            .All(x => x.Email == email);
+
+        return Task.FromResult(isEmailUnique);
     }
 
     public Task<bool> IsEmployeePhoneUniqueAsync(string phone, Guid id)
     {
-        throw new NotImplementedException();
+        var isPhoneUnique = employees
+            .Where(x => x.Id !=  id)
+            .All(x => x.Phone == phone);
+
+        return Task.FromResult(isPhoneUnique);
     }
 }

@@ -2,7 +2,7 @@
 using DotNetBoilerplate.Core.Employees.Exceptions;
 using DotNetBoilerplate.Shared.Abstractions.Queries;
 
-namespace DotNetBoilerplate.Application.Employees.Read;
+namespace DotNetBoilerplate.Application.Employees.Get;
 
 public sealed class GetEmployeeByIdHandler : IQueryHandler<GetEmployeeByIdQuery, EmployeeDto>
 {
@@ -21,12 +21,11 @@ public sealed class GetEmployeeByIdHandler : IQueryHandler<GetEmployeeByIdQuery,
             throw new EmployeeIsNullException(query.Id);
         }
 
-        return new EmployeeDto
-        {
-            FirstName = employee.FirstName,
-            LastName = employee.LastName,
-            Email = employee.Email,
-            Phone = employee.Phone
-        };
+        return new EmployeeDto(
+            employee.FirstName,
+            employee.LastName,
+            employee.Email,
+            employee.Phone
+        );
     }
 }

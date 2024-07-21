@@ -1,7 +1,6 @@
-﻿using DotNetBoilerplate.Application.Employees.Read;
+﻿using DotNetBoilerplate.Application.Employees.Get;
 using DotNetBoilerplate.Shared.Abstractions.Queries;
 
-namespace DotNetBoilerplate.Application.Employees.Read
-{
-    public record GetEmployeeByIdQuery(Guid Id) : IQuery<EmployeeDto>;
-}
+namespace DotNetBoilerplate.Application.Employees.Get;
+
+public record GetEmployeeByIdQuery(Guid Id) : IQuery<EmployeeDto>;

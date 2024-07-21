@@ -3,6 +3,8 @@
 public interface IEmployeesRepository
 {
     Task<Employee?> GetByIdAsync(Guid id);
+
+    Task<List<Employee>> GetAllAsync();
     
     Task AddAsync(Employee employee);
     
