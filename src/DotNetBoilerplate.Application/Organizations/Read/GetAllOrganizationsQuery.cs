@@ -2,5 +2,5 @@
 
 namespace DotNetBoilerplate.Application.Organizations.Read
 {
-    public record GetOrganizationByIdQuery(Guid Id) : IQuery<OrganizationDto>;
+    public sealed class GetAllOrganizationsQuery : IQuery<List<OrganizationDto>>;
 }
