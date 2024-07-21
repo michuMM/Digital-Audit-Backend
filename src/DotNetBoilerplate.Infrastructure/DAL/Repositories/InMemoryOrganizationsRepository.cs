@@ -14,6 +14,11 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
         return Task.FromResult(organization);
     }
 
+    public Task<List<Organization>> GetAllAsync()
+    {
+        return Task.FromResult(organizations);
+    }
+
     public Task AddAsync(Organization organization)
     {
         organizations.Add(organization);
