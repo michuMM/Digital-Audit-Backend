@@ -1,6 +1,6 @@
 ﻿namespace DotNetBoilerplate.Application.Organizations
 {
-    public class OrganizationDto
+    public record OrganizationDto
     {
         public OrganizationDto(Guid id, string name, Guid ownerId, DateTimeOffset createdAt)
         {
