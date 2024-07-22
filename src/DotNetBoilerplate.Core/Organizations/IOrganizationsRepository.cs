@@ -12,5 +12,5 @@ public interface IOrganizationsRepository
 
     Task DeleteAsync(Organization organization);
 
-    Task<bool> IsOrganizationNameUniqueAsync(string name, Guid id);
+    Task<bool> IsOrganizationNameUniqueAsync(string name, Guid? currentOrganizationId);
 }

@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.Organizations.Exceptions;
+using DotNetBoilerplate.Core.Users;
 
 namespace DotNetBoilerplate.Core.Organizations;
 
@@ -12,7 +13,7 @@ public class Organization
 
     public string Name { get; set; } //zmiana na public set, bo UpdateAsync musi móc zmieniać nazwe
 
-    public Guid OwnerId { get; private set; }
+    public UserId OwnerId { get; private set; }
 
     public DateTimeOffset CreatedAt { get; private set; }
 
