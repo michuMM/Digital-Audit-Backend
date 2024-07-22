@@ -1,6 +1,7 @@
 ﻿using DotNetBoilerplate.Core.Users;
 using DotNetBoilerplate.Core.Organizations;
 using DotNetBoilerplate.Core.Devices;
+using DotNetBoilerplate.Core.Employees;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
@@ -13,6 +14,7 @@ internal static class Extensions
         services.AddSingleton<IOrganizationsRepository, InMemoryOrganizationsRepository>();
         services.AddSingleton<IDevicesRepository, InMemoryDevicesRepository>();
 
+        services.AddSingleton<IEmployeesRepository, InMemoryEmployeesRepository>();
         return services;
     }
 }
