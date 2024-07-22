@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using DotNetBoilerplate.Api.Organizations;
+using DotNetBoilerplate.Api.Devices;
 using DotNetBoilerplate.Api.Employees;
 using DotNetBoilerplate.Api.Users;
 using DotNetBoilerplate.Application;
@@ -21,6 +22,7 @@ var app = builder.Build();
 
 app.MapUsersEndpoints();
 app.MapOrganizationsEndpoints();
+app.MapDevicesEndpoints();
 app.MapEmployeesEndpoints();
 
 app.UseInfrastructure();
