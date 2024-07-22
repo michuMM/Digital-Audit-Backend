@@ -1,5 +1,7 @@
 ﻿
 
+using DotNetBoilerplate.Core.Employees.Exceptions;
+
 namespace DotNetBoilerplate.Core.Employees;
 
 public class Employee
@@ -22,8 +24,8 @@ public class Employee
 
     public static Employee NewEmployee(
         Guid organizationid, 
-        string first_name, 
-        string last_name, 
+        string firstName, 
+        string lastName, 
         string email, 
         string phone)
     {
@@ -31,11 +33,28 @@ public class Employee
         {
             Id = Guid.NewGuid(),
             OrganizationId = organizationid,
-            FirstName = first_name,
-            LastName = last_name,
+            FirstName = firstName,
+            LastName = lastName,
             Email = email,
             Phone = phone
         };
     }
 
+    public void Update(string firstName, string lastName, string email, string phone, bool emailIsUnique, bool phoneIsUnique) 
+    { 
+         if (!emailIsUnique)
+         {
+            throw new EmployeeEmailIsNotUniqueException();
+         }
+         
+         if (!phoneIsUnique)
+         {
+            throw new EmployeePhoneNumberIsNotUniqueException();
+         }
+
+         FirstName = firstName;
+         LastName = lastName;
+         Email = email;
+         Phone = phone;
+    }
 }

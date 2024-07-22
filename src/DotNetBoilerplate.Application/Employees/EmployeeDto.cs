@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DotNetBoilerplate.Application.Employees
 {
-    public class EmployeeDto
+    public sealed record EmployeeDto
     {
         public EmployeeDto(string firstName, string lastName, string email, string phone)
         {

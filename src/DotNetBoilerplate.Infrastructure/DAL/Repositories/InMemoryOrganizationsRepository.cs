@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.Organizations;
+using DotNetBoilerplate.Core.Organizations.Exceptions;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -27,7 +28,7 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
 
         if (existingOrganization == null)
         {
-            throw new InvalidOperationException("Organization not found");
+            throw new OrganizationNotFoundException();
         }
 
         existingOrganization.Name = organization.Name;        

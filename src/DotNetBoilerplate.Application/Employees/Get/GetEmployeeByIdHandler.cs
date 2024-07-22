@@ -13,12 +13,12 @@ public sealed class GetEmployeeByIdHandler : IQueryHandler<GetEmployeeByIdQuery,
         _employeesRepository = employeesRepository;
     }
 
-    public async Task<EmployeeDto> HandleAsync(GetEmployeeByIdQuery query)
+    public async Task<EmployeeDto?> HandleAsync(GetEmployeeByIdQuery query)
     {
         var employee = await _employeesRepository.GetByIdAsync(query.Id);
         if (employee is null)
         {
-            throw new EmployeeIsNullException(query.Id);
+            return null;
         }
 
         return new EmployeeDto(

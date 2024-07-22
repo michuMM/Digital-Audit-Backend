@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using DotNetBoilerplate.Application.Organizations.Update;
-using DotNetBoilerplate.Core.Organizations.Exceptions;
 using DotNetBoilerplate.Shared.Abstractions.Commands;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
