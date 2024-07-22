@@ -18,7 +18,7 @@ public sealed class GetOrganizationByIdHandler : IQueryHandler<GetOrganizationBy
         var organization = await _organizationsRepository.GetByIdAsync(query.Id);
         if (organization is null)
         {
-            throw new OrganizationIsNullException(query.Id);
+            return null;
         }
 
         return new OrganizationDto
