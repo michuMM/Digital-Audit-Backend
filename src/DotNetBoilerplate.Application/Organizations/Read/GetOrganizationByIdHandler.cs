@@ -22,11 +22,11 @@ public sealed class GetOrganizationByIdHandler : IQueryHandler<GetOrganizationBy
         }
 
         return new OrganizationDto
-        {
-            Id = organization.Id,
-            Name = organization.Name,
-            OwnerId = organization.OwnerId,
-            CreatedAt = organization.CreatedAt
-        };
+        (
+            organization.Id,
+            organization.Name,
+            organization.OwnerId,
+            organization.CreatedAt
+        );
     }
 }
