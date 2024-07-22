@@ -23,7 +23,16 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
 
     public Task UpdateAsync(Device device)
     {
-        throw new NotImplementedException();
+        var existingDevice = devices.FirstOrDefault(x => x.Id == device.Id);
+
+        if (existingDevice == null)
+        {
+            throw new InvalidOperationException("Device not found");
+        }
+
+        existingDevice.Localization = device.Localization;
+
+        return Task.CompletedTask;
     }
 
     public Task DeleteAsync(Device device)

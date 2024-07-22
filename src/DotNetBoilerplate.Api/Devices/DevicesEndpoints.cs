@@ -11,6 +11,7 @@ internal static class DevicesEndpoints
             .WithTags(Tags);
 
         group
-            .MapEndpoint<AddDeviceEndpoint>();        
+            .MapEndpoint<AddDeviceEndpoint>()  
+            .MapEndpoint<RelocateDeviceEndpoint>();
     }
 }

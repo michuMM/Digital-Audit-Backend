@@ -1,4 +1,6 @@
-﻿namespace DotNetBoilerplate.Core.Devices;
+﻿using DotNetBoilerplate.Core.Organizations.Exceptions;
+
+namespace DotNetBoilerplate.Core.Devices;
 
 public sealed class Device
 {
@@ -18,7 +20,7 @@ public sealed class Device
 
     public DateTimeOffset DateOfPurchase { get; private set; }
 
-    public String Localization {  get; private set; }
+    public String Localization {  get; set; }
 
     public String Status {  get; private set; }
 
@@ -43,5 +45,10 @@ public sealed class Device
             Localization = localization,
             Status = status
         };
+    }
+
+    public void Relocate(string localization)
+    {        
+        Localization = localization;
     }
 }
