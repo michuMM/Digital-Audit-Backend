@@ -35,8 +35,9 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         return Task.CompletedTask;
     }
 
-    public Task DeleteAsync(Device device)
+    public async Task DeleteAsync(Device device)
     {
-        throw new NotImplementedException();
+        devices.Remove(device);
+        await Task.CompletedTask;
     }
 }

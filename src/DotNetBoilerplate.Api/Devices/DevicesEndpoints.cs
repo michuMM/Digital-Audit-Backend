@@ -12,6 +12,7 @@ internal static class DevicesEndpoints
 
         group
             .MapEndpoint<AddDeviceEndpoint>()  
-            .MapEndpoint<RelocateDeviceEndpoint>();
+            .MapEndpoint<RelocateDeviceEndpoint>()
+            .MapEndpoint<DeleteDeviceEndpoint>();
     }
 }
