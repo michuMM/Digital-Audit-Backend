@@ -23,7 +23,7 @@ internal sealed class PostgresOrganizationsRepository(
 
     public async Task AddAsync(Organization organization)
     {
-        dbContext.Organizations.Add(organization);
+        await dbContext.Organizations.AddAsync(organization);
         await dbContext.SaveChangesAsync();
     }
 

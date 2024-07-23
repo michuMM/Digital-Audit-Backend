@@ -1,4 +1,4 @@
-﻿using DotNetBoilerplate.Core.Users;
+using DotNetBoilerplate.Core.Users;
 using DotNetBoilerplate.Core.Organizations;
 using DotNetBoilerplate.Infrastructure.DAL.Configurations.Write;
 using DotNetBoilerplate.Shared.Abstractions.Outbox;
