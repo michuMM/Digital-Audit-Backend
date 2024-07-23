@@ -5,21 +5,21 @@ using DotNetBoilerplate.Shared.Abstractions.Contexts;
 
 namespace DotNetBoilerplate.Application.Organizations.Delete
 {
-    internal sealed class DeleteProjectHandler(
-        IOrganizationsRepository projectRepository,
+    internal sealed class DeleteOrganizationHandler(
+        IOrganizationsRepository organizationRepository,
         IContext context
     ) : ICommandHandler<DeleteOrganizationCommand>
     {
         public async Task HandleAsync(DeleteOrganizationCommand command)
         {
-            var project = await projectRepository.GetByIdAsync(command.OrganizationId);
+            var organization = await organizationRepository.GetByIdAsync(command.OrganizationId);
 
-            if (project == null)
+            if (organization is null)
             {
-                throw new Exception("Project not found.");
+                throw new Exception("Organization not found.");
             }
 
-            await projectRepository.DeleteAsync(project);
+            await organizationRepository.DeleteAsync(organization);
         }
     }
 }
