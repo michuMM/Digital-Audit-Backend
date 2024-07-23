@@ -32,9 +32,10 @@ internal sealed class InMemoryEmployeesRepository : IEmployeesRepository
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(Employee employee)
     {
-        throw new NotImplementedException();
+        employees.Remove(employee);
+        await Task.CompletedTask;
     }
 
     public Task<bool> IsEmployeeEmailUniqueAsync(string email, Guid id)

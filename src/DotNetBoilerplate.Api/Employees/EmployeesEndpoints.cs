@@ -13,6 +13,7 @@ internal static class OrganizationsEndpoints
         group
             .MapEndpoint<CreateEmployeeEndpoint>()
             .MapEndpoint<GetEmployeeByIdEnpoint>()
-            .MapEndpoint<GetAllEmployeesEndpoint>();
+            .MapEndpoint<GetAllEmployeesEndpoint>()
+            .MapEndpoint<DeleteEmployeeEndpoint>();
     }
 }
