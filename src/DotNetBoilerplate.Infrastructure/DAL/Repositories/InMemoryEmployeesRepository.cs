@@ -1,5 +1,6 @@
 ﻿using DotNetBoilerplate.Core.Employees;
 using DotNetBoilerplate.Core.Users;
+using DotNetBoilerplate.Core.Employees.Exceptions;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -29,7 +30,19 @@ internal sealed class InMemoryEmployeesRepository : IEmployeesRepository
 
     public Task UpdateAsync(Employee employee)
     {
-        throw new NotImplementedException();
+        var existingEmployee = employees.FirstOrDefault(x => x.Id == employee.Id);
+
+        if (existingEmployee == null) 
+        {
+            throw new EmployeeNotFoundException();
+        }
+
+        existingEmployee.FirstName = employee.FirstName;
+        existingEmployee.LastName = employee.LastName;
+        existingEmployee.Email = employee.Email;
+        existingEmployee.Phone = employee.Phone;
+
+        return Task.CompletedTask;
     }
 
     public Task DeleteAsync(Guid id)
