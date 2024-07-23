@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.Users;
+using DotNetBoilerplate.Core.Organizations;
 using DotNetBoilerplate.Infrastructure.DAL.Configurations.Write;
 using DotNetBoilerplate.Shared.Abstractions.Outbox;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ internal sealed class DotNetBoilerplateWriteDbContext(DbContextOptions<DotNetBoi
 {
     public DbSet<User> Users { get; set; }
     public DbSet<OutboxMessage> OutboxMessages { get; set; }
+    public DbSet<Organization> Organizations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -17,6 +19,6 @@ internal sealed class DotNetBoilerplateWriteDbContext(DbContextOptions<DotNetBoi
 
         modelBuilder.ApplyConfiguration(new UserWriteConfiguration());
         modelBuilder.ApplyConfiguration(new OutboxMessageWriteConfiguration());
-
+        modelBuilder.ApplyConfiguration(new OrganizationWriteConfiguration());
     }
 }

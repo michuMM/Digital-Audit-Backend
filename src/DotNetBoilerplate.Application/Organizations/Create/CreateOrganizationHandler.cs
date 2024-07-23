@@ -32,7 +32,7 @@ internal sealed class CreateOrganizationHandler(
             context.Identity.Id,
             clock.Now(),
             isNameUnique
-        );
+        );      
 
         await organizationsRepository.AddAsync(organization);
         

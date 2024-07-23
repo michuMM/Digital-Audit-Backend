@@ -13,7 +13,7 @@ internal sealed class CreateOrganizationEndpoint : IEndpoint
     public static void Map(IEndpointRouteBuilder app)
     {
         app.MapPost("", Handle)
-            .RequireAuthorization()
+            //.RequireAuthorization()
             .WithSummary("Create organization");
     }
 

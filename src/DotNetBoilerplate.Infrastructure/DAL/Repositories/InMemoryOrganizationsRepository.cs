@@ -46,10 +46,10 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> IsOrganizationNameUniqueAsync(string name, Guid id)
+    public Task<bool> IsOrganizationNameUniqueAsync(string name, Guid? currentOrganizationId)
     {
         var isNameUnique = organizations
-            .Where(x => x.Id != id)
+            .Where(x => x.Id != currentOrganizationId)
             .All(x => x.Name != name);
 
         return Task.FromResult(isNameUnique);
