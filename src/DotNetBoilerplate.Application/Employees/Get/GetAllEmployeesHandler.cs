@@ -14,5 +14,4 @@ namespace DotNetBoilerplate.Application.Employees.Get
             return employees.Select(e => new EmployeeDto(e.FirstName, e.LastName, e.Email, e.Phone)).ToList();
         }
     }
-    
 }

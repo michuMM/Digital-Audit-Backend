@@ -13,10 +13,16 @@ public sealed class InMemoryDeviceAssignmentsRepository : IDeviceAssignmentsRepo
         return Task.FromResult(deviceAssignment);
     }
 
+    public Task<List<DeviceAssignment>> GetAllAsync()
+    {
+        Console.WriteLine($"Liczba urządzeń: {deviceAssignments.Count}");
+        return Task.FromResult(deviceAssignments);
+    }    
+
     public Task AddAsync(DeviceAssignment deviceAssignment)
     {
-        deviceAssignments.Add(deviceAssignment);
-
+        Console.WriteLine($"Dodawanie urządzenia: {deviceAssignment.Id}");
+        deviceAssignments.Add(deviceAssignment);  
         return Task.CompletedTask;
     }
 

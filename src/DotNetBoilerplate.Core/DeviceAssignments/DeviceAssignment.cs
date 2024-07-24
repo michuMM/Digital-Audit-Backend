@@ -11,7 +11,6 @@ public class DeviceAssignment
     public Guid EmployeeId { get; set; }
     public DateTimeOffset IssueDate { get; set; }
     public DateTimeOffset ReturnDate { get; set; }
-
     public string ConditionOnReturn { get; set; }
 
     public static DeviceAssignment Assign(
