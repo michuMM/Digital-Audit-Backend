@@ -19,7 +19,6 @@ internal sealed class CreateEmployeeEndpoint : IEndpoint
 
     private static async Task<Ok<Response>> Handle(
         [FromBody] Request request,
-        [FromRoute] Guid OrganizationId,
         [FromServices] ICommandDispatcher commandDispatcher,
         CancellationToken ct
     )
