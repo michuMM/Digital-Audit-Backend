@@ -10,9 +10,10 @@ using DotNetBoilerplate.Core.Employees;
 namespace DotNetBoilerplate.Application.DeviceAssignments.Add;
 
 internal sealed class AssignDeviceHandler(
+    IDeviceAssignmentsRepository deviceAssignmentsRepository,
     IDevicesRepository devicesRepository,
-    IEmployeesRepository employeesRepository, 
-    IClock clock    
+    IEmployeesRepository employeesRepository,
+    IClock clock
 ) : ICommandHandler<AssignDeviceCommand, Guid>
 {
     public async Task<Guid> HandleAsync(AssignDeviceCommand command)
@@ -36,8 +37,8 @@ internal sealed class AssignDeviceHandler(
             command.ReturnDate
         );
 
-        await devicesRepository.AddAsync(device);
+        await deviceAssignmentsRepository.AddAsync(deviceAssignment);
 
         return device.Id;
     }
-} 
+}
