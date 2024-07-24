@@ -12,7 +12,7 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
 
     public Task<List<DeviceCategory>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return Task.FromResult(deviceCategories);
     }
 
     public Task AddAsync(DeviceCategory deviceCategory)
