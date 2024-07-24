@@ -22,5 +22,9 @@
 
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DeviceAssignments\Exceptions\" />
+    </ItemGroup>
+
 
 </Project>
