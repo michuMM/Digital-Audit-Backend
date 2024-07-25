@@ -29,7 +29,7 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
     {
         var existingDeviceCategory = deviceCategories.FirstOrDefault(x => x.CategoryId == deviceCategory.CategoryId);
 
-        if (existingDeviceCategory != null)
+        if (existingDeviceCategory == null)
         {
             throw new DeviceCategoryIsNullException(deviceCategory.CategoryId);
         }

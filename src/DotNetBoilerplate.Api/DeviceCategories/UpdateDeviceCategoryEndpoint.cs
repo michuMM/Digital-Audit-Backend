@@ -10,7 +10,7 @@ internal sealed class UpdateDeviceCategoryEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
     {
-        app.MapPut("{id:guid}", Handle)
+        app.MapPut("{categoryId:guid}", Handle)
             .RequireAuthorization()
             .WithSummary("Update device category");
     }

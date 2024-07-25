@@ -14,7 +14,7 @@ internal class UpdateDeviceCategoryHandler(
     {
         var deviceCategory = await deviceCategoriesRepository.GetByIdAsync(command.categoryId);
 
-        if (deviceCategory == null)
+        if (deviceCategory is null)
         {
             throw new DeviceCategoryIsNullException(command.categoryId);
         }
