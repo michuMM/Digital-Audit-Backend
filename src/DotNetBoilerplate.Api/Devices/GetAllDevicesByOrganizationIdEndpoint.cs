@@ -6,21 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetBoilerplate.Api.Devices
 {
-    public class GetAllDevicesEndpoint : IEndpoint
+    public class GetAllDevicesByOrganizationIdEndpoint : IEndpoint
     {
         public static void Map(IEndpointRouteBuilder app)
         {
-            app.MapGet("/GetAll", Handle)
+            app.MapGet("fromOrganization", Handle)
                 .RequireAuthorization()
-                .WithSummary("Get all devices");
+                .WithSummary("Get all devices by organization id");
         }
 
         private static async Task<Ok<List<DeviceDto>>> Handle(
+            [FromRoute] Guid organizationId,
             [FromServices] IQueryDispatcher queryDispatcher,
             CancellationToken ct
         )
         {
-            var query = new GetAllDevicesQuery();
+            var query = new GetAllDevicesByOrganizationIdQuery(organizationId);
 
             var result = await queryDispatcher.QueryAsync(query, ct);
 

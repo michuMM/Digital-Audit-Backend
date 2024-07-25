@@ -2,5 +2,5 @@
 
 namespace DotNetBoilerplate.Application.Devices.Get
 {
-    public record GetDeviceByIdQuery(Guid Id) : IQuery<DeviceDto>;
+    public record GetAllDevicesByOrganizationIdQuery(Guid OrganizationId) : IQuery<List<DeviceDto>>;
 }
