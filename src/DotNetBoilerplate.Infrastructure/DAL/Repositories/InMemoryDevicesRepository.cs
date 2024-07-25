@@ -6,7 +6,6 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
 {
     private readonly List<Device> devices = [];
 
-
     public Task<Device> GetByIdAsync(Guid id)
     {
         var device = devices.Find(x => x.Id == id);

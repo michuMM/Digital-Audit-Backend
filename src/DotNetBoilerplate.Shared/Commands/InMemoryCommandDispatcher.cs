@@ -25,17 +25,17 @@ public class InMemoryCommandDispatcher : ICommandDispatcher
 
         await handler.HandleAsync(command);
     }
-    
-    public Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command,
+
+    public async Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command,
         CancellationToken cancellationToken = default) where TCommand : class, ICommand<TResult>
     {
         using var scope = _serviceProvider.CreateScope();
         var validator = scope.ServiceProvider.GetService<IValidator<TCommand>>();
 
-        if (validator is not null) validator.ValidateAndThrowAsync(command, cancellationToken);
+        if (validator is not null) await validator.ValidateAndThrowAsync(command, cancellationToken);
 
         var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand, TResult>>();
 
-        return handler.HandleAsync(command);
+        return await handler.HandleAsync(command);
     }
 }
