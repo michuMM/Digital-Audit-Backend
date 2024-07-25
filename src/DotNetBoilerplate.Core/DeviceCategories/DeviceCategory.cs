@@ -1,4 +1,4 @@
-﻿
+﻿using DotNetBoilerplate.Core.DeviceCategories.Exceptions;
 
 namespace DotNetBoilerplate.Core.DeviceCategories;
 
@@ -25,5 +25,15 @@ public class DeviceCategory
             OrganizationId = organizationId,
             CategoryName = categoryName
         };
+    }
+
+    public void UpdateCategory(string categoryName, bool isDeviceCategoryUnique)
+    {
+        if (!isDeviceCategoryUnique)
+        {
+            throw new DeviceCategoryNameIsNotUnique();
+        }
+
+        CategoryName = categoryName;
     }
 }

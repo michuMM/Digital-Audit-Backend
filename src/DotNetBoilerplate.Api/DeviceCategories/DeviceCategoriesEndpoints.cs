@@ -14,6 +14,7 @@ internal static class DeviceCategoriesEndpoints
             .MapEndpoint<CreateDeviceCategoryEndpoint>()
             .MapEndpoint<GetAllDeviceCategoriesEndpoint>()
             .MapEndpoint<GetDeviceCategoryByIdEnpoint>()
-            .MapEndpoint<DeleteDeviceCategoryEndpoint>();
+            .MapEndpoint<DeleteDeviceCategoryEndpoint>()
+            .MapEndpoint<UpdateDeviceCategoryEndpoint>();
     }
 }
