@@ -33,6 +33,7 @@ public sealed class InMemoryDeviceAssignmentsRepository : IDeviceAssignmentsRepo
 
     public Task DeleteAsync(DeviceAssignment deviceAssignment)
     {
-        throw new NotImplementedException();
+        deviceAssignments.Remove(deviceAssignment);
+        return Task.CompletedTask;
     }
 }
