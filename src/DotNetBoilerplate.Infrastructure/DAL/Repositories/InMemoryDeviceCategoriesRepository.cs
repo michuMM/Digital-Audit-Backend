@@ -7,7 +7,9 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
     private readonly List<DeviceCategory> deviceCategories = [];
     public Task<DeviceCategory?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var deviceCategory = deviceCategories.Find(x => x.CategoryId == id);
+
+        return Task.FromResult(deviceCategory);
     }
 
     public Task<List<DeviceCategory>> GetAllAsync()

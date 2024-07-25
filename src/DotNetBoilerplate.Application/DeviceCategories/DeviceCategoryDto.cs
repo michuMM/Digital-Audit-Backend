@@ -13,7 +13,7 @@ namespace DotNetBoilerplate.Application.DeviceCategories
 
         public Guid CategoryId { get; private set; }
 
-        public Guid OrganizationId { get; private set; }
+        public Guid OrganizationId { get;  private set; }
 
         public string CategoryName { get; set; }
     }
