@@ -29,14 +29,19 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
         throw new NotImplementedException();
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(DeviceCategory deviceCategory)
     {
-        throw new NotImplementedException();
+        deviceCategories.Remove(deviceCategory);
+        await Task.CompletedTask;
     }
 
     // Tutaj trzeba wziąć pod uwagę powtarzanie się nazw w różnych kategoriach
-    public Task<bool> IsDeviceCategoryUniqueAsync(string deviceCategory, Guid categoryid, Guid organizationId)
+    public Task<bool> IsDeviceCategoryUniqueAsync(string deviceCategory, Guid categoryId, Guid organizationId)
     {
-        throw new NotImplementedException();
+        var isCategoryUnique = deviceCategories
+            .Where(x => x.OrganizationId == organizationId && x.CategoryId != categoryId)
+            .All(x => x.CategoryName != deviceCategory);
+
+        return Task.FromResult(isCategoryUnique);
     }
 }

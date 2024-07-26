@@ -19,6 +19,9 @@ internal sealed class CreateEmployeeHandler(IEmployeesRepository employeesReposi
             throw new ValidationException(validationResult.Errors);        
         }
 
+        var isEmailUnique = await employeesRepository.IsEmployeeEmailUniqueAsync(command.Email, Guid.Empty);
+        var isPhoneUnique = await employeesRepository.IsEmployeePhoneUniqueAsync(command.Phone, Guid.Empty);
+
         var employee = Employee.NewEmployee(
            command.OrganizationId,
            command.FirstName,

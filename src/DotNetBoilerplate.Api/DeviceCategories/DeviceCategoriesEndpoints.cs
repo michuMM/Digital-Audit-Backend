@@ -13,6 +13,7 @@ internal static class DeviceCategoriesEndpoints
         group
             .MapEndpoint<CreateDeviceCategoryEndpoint>()
             .MapEndpoint<GetAllDeviceCategoriesEndpoint>()
-            .MapEndpoint<GetDeviceCategoryByIdEnpoint>();
+            .MapEndpoint<GetDeviceCategoryByIdEnpoint>()
+            .MapEndpoint<DeleteDeviceCategoryEndpoint>();
     }
 }

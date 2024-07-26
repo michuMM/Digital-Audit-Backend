@@ -1,5 +1,4 @@
 ﻿using DotNetBoilerplate.Core.DeviceCategories;
-using DotNetBoilerplate.Core.Employees;
 using DotNetBoilerplate.Shared.Abstractions.Commands;
 using FluentValidation;
 
@@ -18,6 +17,8 @@ internal sealed class CreateDeviceCategoryHandler(IDeviceCategoriesRepository de
         {
             throw new ValidationException(validationResult.Errors);
         }
+
+        var isDeviceCategoryUnique = await _deviceCategoriesRepository.IsDeviceCategoryUniqueAsync(command.CategoryName, Guid.Empty, command.OrganizationId);
 
         var deviceCategory = DeviceCategory.CreateCategory(
             command.OrganizationId,
