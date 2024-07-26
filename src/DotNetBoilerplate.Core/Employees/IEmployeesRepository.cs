@@ -10,7 +10,7 @@ public interface IEmployeesRepository
     
     Task UpdateAsync(Employee employee);
     
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(Employee employee);
 
     Task<bool> IsEmployeeEmailUniqueAsync(string email, Guid id);
 

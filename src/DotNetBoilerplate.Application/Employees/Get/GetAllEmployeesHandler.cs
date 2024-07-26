@@ -11,8 +11,7 @@ namespace DotNetBoilerplate.Application.Employees.Get
         public async Task<List<EmployeeDto>> HandleAsync(GetAllEmployeesQuery query)
         {
             var employees = await employeesRepository.GetAllAsync();
-            return employees.Select(e => new EmployeeDto(e.FirstName, e.LastName, e.Email, e.Phone)).ToList();
+            return employees.Select(e => new EmployeeDto(e.Id, e.OrganizationId, e.FirstName, e.LastName, e.Email, e.Phone)).ToList();
         }
     }
-    
 }

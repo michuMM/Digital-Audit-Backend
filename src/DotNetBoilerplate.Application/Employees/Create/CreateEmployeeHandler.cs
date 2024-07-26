@@ -5,16 +5,11 @@ using FluentValidation;
 
 namespace DotNetBoilerplate.Application.Employees.Create;
 
-internal sealed class CreateEmployeeHandler : ICommandHandler<CreateEmployeeCommand, Guid>
+internal sealed class CreateEmployeeHandler(IEmployeesRepository employeesRepository, IValidator<CreateEmployeeCommand> validator) : ICommandHandler<CreateEmployeeCommand, Guid>
 {
-    private readonly IEmployeesRepository _employeesRepository;
-    private readonly IValidator<CreateEmployeeCommand> _validator;
+    private readonly IEmployeesRepository _employeesRepository = employeesRepository;
+    private readonly IValidator<CreateEmployeeCommand> _validator = validator;
 
-    public CreateEmployeeHandler(IEmployeesRepository employeesRepository, IValidator<CreateEmployeeCommand> validator)
-    {
-        _employeesRepository = employeesRepository;
-        _validator = validator;
-    }
     public async Task<Guid> HandleAsync(CreateEmployeeCommand command)
     {
         var validationResult = await _validator.ValidateAsync(command);

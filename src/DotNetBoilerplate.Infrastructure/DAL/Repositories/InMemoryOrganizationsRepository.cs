@@ -41,9 +41,10 @@ internal sealed class InMemoryOrganizationsRepository : IOrganizationsRepository
         return Task.CompletedTask;
     }
 
-    public Task DeleteAsync(Organization organization)
+    public async Task DeleteAsync(Organization organization)
     {
-        throw new NotImplementedException();
+        organizations.Remove(organization);
+        await Task.CompletedTask;
     }
 
     public Task<bool> IsOrganizationNameUniqueAsync(string name, Guid id)
