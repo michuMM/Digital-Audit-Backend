@@ -19,6 +19,17 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         return Task.FromResult(devices);
     }
 
+    public Task<List<Device>> GetAllByOrganizationIdAsync(Guid organizationId)
+    {
+        Console.WriteLine("Wykonuje GetAllByOrganizationId");
+        var filtered = devices
+            .Where(d => d.OrganizationId == organizationId)
+            .ToList();
+
+        Console.WriteLine($"Devices: {filtered}");
+        return Task.FromResult(filtered);
+    }
+
     public Task AddAsync(Device device)
     {
         devices.Add(device);
