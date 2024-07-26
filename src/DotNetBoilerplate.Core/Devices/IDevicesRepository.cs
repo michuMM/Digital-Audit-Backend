@@ -7,6 +7,7 @@ public interface IDevicesRepository
 
     Task<List<Device>> GetAllAsync();
 
+    Task<List<Device>> GetAllByOrganizationIdAsync(Guid organizationId);
     Task AddAsync(Device device);
 
     Task UpdateAsync(Device device);
