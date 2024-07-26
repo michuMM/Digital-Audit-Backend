@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.DeviceCategories;
+using DotNetBoilerplate.Core.DeviceCategories.Exceptions;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -26,7 +27,16 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
 
     public Task UpdateAsync(DeviceCategory deviceCategory)
     {
-        throw new NotImplementedException();
+        var existingDeviceCategory = deviceCategories.FirstOrDefault(x => x.CategoryId == deviceCategory.CategoryId);
+
+        if (existingDeviceCategory == null)
+        {
+            throw new DeviceCategoryIsNullException(deviceCategory.CategoryId);
+        }
+
+        existingDeviceCategory.CategoryName = deviceCategory.CategoryName;
+
+        return Task.CompletedTask;
     }
 
     public async Task DeleteAsync(DeviceCategory deviceCategory)

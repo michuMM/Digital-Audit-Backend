@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DotNetBoilerplate.Shared.Abstractions.Exceptions;
 
-namespace DotNetBoilerplate.Core.DeviceCategories.Exceptions
-{
-    internal class DeviceCategoryNameIsNotUnique
-    {
-    }
-}
+namespace DotNetBoilerplate.Core.DeviceCategories.Exceptions;
+
+internal sealed class DeviceCategoryNameIsNotUnique() : CustomException("Device category is not unique.");
