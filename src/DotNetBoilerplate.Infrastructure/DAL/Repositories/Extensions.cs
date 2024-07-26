@@ -17,6 +17,7 @@ internal static class Extensions
         services.AddSingleton<IDeviceAssignmentsRepository, InMemoryDeviceAssignmentsRepository>();
 
         services.AddSingleton<IEmployeesRepository, InMemoryEmployeesRepository>();
+        services.AddSingleton<IDeviceCategoriesRepository, InMemoryDeviceCategoriesRepository>();
         return services;
     }
 }

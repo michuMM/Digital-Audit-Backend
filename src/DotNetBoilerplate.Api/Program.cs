@@ -8,6 +8,7 @@ using DotNetBoilerplate.Application;
 using DotNetBoilerplate.Core;
 using DotNetBoilerplate.Infrastructure;
 using DotNetBoilerplate.Shared;
+using DotNetBoilerplate.Api.DeviceCategories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,7 @@ app.MapUsersEndpoints();
 app.MapOrganizationsEndpoints();
 app.MapDevicesEndpoints();
 app.MapEmployeesEndpoints();
+app.MapDeviceCategoriesEndpoints();
 app.MapDeviceAssignmentsEndpoints();
 
 app.UseInfrastructure();
