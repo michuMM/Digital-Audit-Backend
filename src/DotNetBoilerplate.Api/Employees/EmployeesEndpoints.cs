@@ -14,7 +14,7 @@ internal static class OrganizationsEndpoints
             .MapEndpoint<CreateEmployeeEndpoint>()
             .MapEndpoint<GetEmployeeByIdEnpoint>()
             .MapEndpoint<GetAllEmployeesEndpoint>()
-            .MapEndpoint<DeleteEmployeeEndpoint>();
+            .MapEndpoint<DeleteEmployeeEndpoint>()
             .MapEndpoint<UpdateEmployeeEndpoint>();
 
     }
