@@ -1,6 +1,4 @@
-﻿
-
-using DotNetBoilerplate.Core.Employees.Exceptions;
+﻿using DotNetBoilerplate.Core.Employees.Exceptions;
 
 namespace DotNetBoilerplate.Core.Employees;
 
