@@ -1,4 +1,4 @@
-﻿using DotNetBoilerplate.Application.Organizations.Read;
+﻿using DotNetBoilerplate.Application.Organizations;
 using DotNetBoilerplate.Shared.Abstractions.Queries;
 
 namespace DotNetBoilerplate.Application.Organizations.Read

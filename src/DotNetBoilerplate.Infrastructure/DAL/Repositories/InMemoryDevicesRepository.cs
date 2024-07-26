@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.Devices;
+using DotNetBoilerplate.Core.Organizations;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -12,6 +13,11 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
         var device = devices.Find(x => x.Id == id);
 
         return Task.FromResult(device);
+    }
+
+    public Task<List<Device>> GetAllAsync()
+    {
+        return Task.FromResult(devices);
     }
 
     public Task AddAsync(Device device)
