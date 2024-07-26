@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace DotNetBoilerplate.Application.DeviceCategories
 {
-    internal class DeviceCategoryDto
+    public sealed record DeviceCategoryDto
     {
+        public DeviceCategoryDto(Guid categoryId, Guid organizationId, string categoryName)
+        {
+            CategoryId = categoryId;
+            OrganizationId = organizationId;
+            CategoryName = categoryName;
+        }
+
+        public Guid CategoryId { get; private set; }
+
+        public Guid OrganizationId { get;  private set; }
+
+        public string CategoryName { get; set; }
     }
 }

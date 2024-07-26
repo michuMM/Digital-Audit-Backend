@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.DeviceCategories;
+using DotNetBoilerplate.Core.DeviceCategories.Exceptions;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -7,12 +8,14 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
     private readonly List<DeviceCategory> deviceCategories = [];
     public Task<DeviceCategory?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var deviceCategory = deviceCategories.Find(x => x.CategoryId == id);
+
+        return Task.FromResult(deviceCategory);
     }
 
     public Task<List<DeviceCategory>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return Task.FromResult(deviceCategories);
     }
 
     public Task AddAsync(DeviceCategory deviceCategory)
@@ -24,17 +27,31 @@ internal sealed class InMemoryDeviceCategoriesRepository : IDeviceCategoriesRepo
 
     public Task UpdateAsync(DeviceCategory deviceCategory)
     {
-        throw new NotImplementedException();
+        var existingDeviceCategory = deviceCategories.FirstOrDefault(x => x.CategoryId == deviceCategory.CategoryId);
+
+        if (existingDeviceCategory == null)
+        {
+            throw new DeviceCategoryIsNullException(deviceCategory.CategoryId);
+        }
+
+        existingDeviceCategory.CategoryName = deviceCategory.CategoryName;
+
+        return Task.CompletedTask;
     }
 
-    public Task DeleteAsync(Guid id)
+    public async Task DeleteAsync(DeviceCategory deviceCategory)
     {
-        throw new NotImplementedException();
+        deviceCategories.Remove(deviceCategory);
+        await Task.CompletedTask;
     }
 
     // Tutaj trzeba wziąć pod uwagę powtarzanie się nazw w różnych kategoriach
-    public Task<bool> IsDeviceCategoryUniqueAsync(string deviceCategory, Guid categoryid, Guid organizationId)
+    public Task<bool> IsDeviceCategoryUniqueAsync(string deviceCategory, Guid categoryId, Guid organizationId)
     {
-        throw new NotImplementedException();
+        var isCategoryUnique = deviceCategories
+            .Where(x => x.OrganizationId == organizationId && x.CategoryId != categoryId)
+            .All(x => x.CategoryName != deviceCategory);
+
+        return Task.FromResult(isCategoryUnique);
     }
 }

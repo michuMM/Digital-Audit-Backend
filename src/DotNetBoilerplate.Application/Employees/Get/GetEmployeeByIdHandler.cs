@@ -1,17 +1,11 @@
 ﻿using DotNetBoilerplate.Core.Employees;
-using DotNetBoilerplate.Core.Employees.Exceptions;
 using DotNetBoilerplate.Shared.Abstractions.Queries;
 
 namespace DotNetBoilerplate.Application.Employees.Get;
 
-public sealed class GetEmployeeByIdHandler : IQueryHandler<GetEmployeeByIdQuery, EmployeeDto>
+public sealed class GetEmployeeByIdHandler(IEmployeesRepository employeesRepository) : IQueryHandler<GetEmployeeByIdQuery, EmployeeDto>
 {
-    private readonly IEmployeesRepository _employeesRepository;
-    
-    public GetEmployeeByIdHandler(IEmployeesRepository employeesRepository)
-    {
-        _employeesRepository = employeesRepository;
-    }
+    private readonly IEmployeesRepository _employeesRepository = employeesRepository;
 
     public async Task<EmployeeDto?> HandleAsync(GetEmployeeByIdQuery query)
     {

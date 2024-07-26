@@ -16,7 +16,7 @@ public interface IDeviceCategoriesRepository
 
     Task UpdateAsync(DeviceCategory deviceCategory);
 
-    Task DeleteAsync(Guid id);
+    Task DeleteAsync(DeviceCategory deviceCategory);
 
     Task<bool> IsDeviceCategoryUniqueAsync(string deviceCategory, Guid categoryid, Guid organizationId);
 }
