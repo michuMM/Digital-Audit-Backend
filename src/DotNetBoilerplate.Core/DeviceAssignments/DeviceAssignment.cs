@@ -29,6 +29,15 @@ public class DeviceAssignment
             ReturnDate = returnDate
         };
     }
+
+    public void Modify(
+        Guid employeeId,
+        Guid deviceId
+    )
+    {
+        EmployeeId = employeeId;
+        DeviceId = deviceId;
+    }        
 }
 
 //TO DO
