@@ -1,4 +1,5 @@
 ﻿using DotNetBoilerplate.Core.DeviceAssignments;
+using DotNetBoilerplate.Core.Devices;
 
 namespace DotNetBoilerplate.Infrastructure.DAL.Repositories;
 
@@ -14,14 +15,21 @@ public sealed class InMemoryDeviceAssignmentsRepository : IDeviceAssignmentsRepo
     }
 
     public Task<List<DeviceAssignment>> GetAllAsync()
-    {
-        Console.WriteLine($"Liczba urządzeń: {deviceAssignments.Count}");
+    {        
         return Task.FromResult(deviceAssignments);
-    }    
+    }
+
+    public Task<List<DeviceAssignment>> GetAllByOrganizationIdAsync(Guid organizationId)
+    {    
+        var filtered = deviceAssignments
+            .Where(da => da.OrganizationId == organizationId)
+            .ToList();
+        
+        return Task.FromResult(filtered);
+    }
 
     public Task AddAsync(DeviceAssignment deviceAssignment)
-    {
-        Console.WriteLine($"Dodawanie urządzenia: {deviceAssignment.Id}");
+    {        
         deviceAssignments.Add(deviceAssignment);  
         return Task.CompletedTask;
     }
