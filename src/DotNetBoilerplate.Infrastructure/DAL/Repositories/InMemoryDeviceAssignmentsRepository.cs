@@ -36,7 +36,17 @@ public sealed class InMemoryDeviceAssignmentsRepository : IDeviceAssignmentsRepo
 
     public Task UpdateAsync(DeviceAssignment deviceAssignment)
     {
-        throw new NotImplementedException();
+        var existingDeviceAssignment = deviceAssignments.FirstOrDefault(x => x.Id == deviceAssignment.Id);
+
+        if (existingDeviceAssignment == null)
+        {
+            throw new InvalidOperationException("Device Assignment not found");
+        }
+
+        existingDeviceAssignment.EmployeeId = deviceAssignment.EmployeeId;
+        existingDeviceAssignment.DeviceId = deviceAssignment.DeviceId;
+
+        return Task.CompletedTask;
     }
 
     public Task DeleteAsync(DeviceAssignment deviceAssignment)
