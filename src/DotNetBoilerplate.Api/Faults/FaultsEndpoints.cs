@@ -11,6 +11,7 @@ internal static class FaultsEndpoints
             .WithTags(Tags);
 
         group
-            .MapEndpoint<ReportFaultEndpoint>();
+            .MapEndpoint<ReportFaultEndpoint>()
+            .MapEndpoint<GetAllFaultsByOrganizationIdEndpoint>();
     }
 }

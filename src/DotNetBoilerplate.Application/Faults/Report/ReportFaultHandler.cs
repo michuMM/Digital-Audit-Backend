@@ -21,7 +21,7 @@ internal sealed class ReportFaultHandler(
         if (device is null)
         {
             throw new DeviceNotFoundException(command.DeviceId);
-        }
+        }      
 
         var employee = await employeesRepository.GetByIdAsync(command.ReporterId);
         if (employee is null)
@@ -32,6 +32,7 @@ internal sealed class ReportFaultHandler(
         var fault = Fault.Report(
             command.DeviceId,
             command.ReporterId,
+            device.OrganizationId,
             command.Name,
             command.Description,
             command.DeviceStatus,

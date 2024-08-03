@@ -12,6 +12,8 @@ public sealed class Fault
 
     public Guid ReporterId { get; private set; }
 
+    public Guid OrganizationId { get; private set; }
+
     public string Name { get; private set; }
 
     public string Description { get; private set; }
@@ -27,6 +29,7 @@ public sealed class Fault
     public static Fault Report(
         Guid deviceId,
         Guid reporterId,
+        Guid organizationId,
         string name,
         string description,
         string deviceStatus,
@@ -40,6 +43,7 @@ public sealed class Fault
             Id = Guid.NewGuid(), 
             DeviceId = deviceId,
             ReporterId = reporterId,
+            OrganizationId = organizationId,
             Name = name,
             Description = description,
             DeviceStatus = deviceStatus,

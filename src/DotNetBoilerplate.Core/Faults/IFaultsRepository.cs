@@ -5,6 +5,8 @@ public interface IFaultsRepository
 
     Task<List<Fault>> GetAllAsync();
 
+    Task<List<Fault>> GetAllByOrganizationIdAsync(Guid organizationId);
+
     Task AddAsync(Fault fault);
 
     Task UpdateAsync(Fault fault);
