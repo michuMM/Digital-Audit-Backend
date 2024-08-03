@@ -5,6 +5,8 @@ public interface IDeviceAssignmentsRepository
 
     Task<List<DeviceAssignment>> GetAllAsync();
 
+    Task<List<DeviceAssignment>> GetAllByOrganizationIdAsync(Guid id);
+
     Task AddAsync(DeviceAssignment deviceAssignment);
 
     Task UpdateAsync(DeviceAssignment deviceAssignment);

@@ -9,6 +9,7 @@ public class DeviceAssignment
     public Guid Id { get; set; }
     public Guid DeviceId { get; set; }
     public Guid EmployeeId { get; set; }
+    public Guid OrganizationId { get; set; }
     public DateTimeOffset IssueDate { get; set; }
     public DateTimeOffset ReturnDate { get; set; }
     public string ConditionOnReturn { get; set; }
@@ -16,6 +17,7 @@ public class DeviceAssignment
     public static DeviceAssignment Assign(
         Guid deviceId,
         Guid employeeId,
+        Guid organizationId,
         DateTimeOffset now,
         DateTimeOffset returnDate
     )
@@ -25,6 +27,7 @@ public class DeviceAssignment
             Id = Guid.NewGuid(),
             DeviceId = deviceId,
             EmployeeId = employeeId,
+            OrganizationId = organizationId,
             IssueDate = now,
             ReturnDate = returnDate
         };

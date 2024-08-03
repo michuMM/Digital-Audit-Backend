@@ -20,13 +20,10 @@ public sealed class InMemoryDevicesRepository : IDevicesRepository
     }
 
     public Task<List<Device>> GetAllByOrganizationIdAsync(Guid organizationId)
-    {
-        Console.WriteLine("Wykonuje GetAllByOrganizationId");
+    {        
         var filtered = devices
             .Where(d => d.OrganizationId == organizationId)
-            .ToList();
-
-        Console.WriteLine($"Devices: {filtered}");
+            .ToList();        
         return Task.FromResult(filtered);
     }
 

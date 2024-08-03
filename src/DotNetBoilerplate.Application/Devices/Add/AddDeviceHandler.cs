@@ -8,8 +8,7 @@ namespace DotNetBoilerplate.Application.Devices.Add;
 
 internal sealed class AddDeviceHandler(
     IDevicesRepository devicesRepository,
-    IOrganizationsRepository organizationsRepository,
-    IContext context    
+    IOrganizationsRepository organizationsRepository
 ) : ICommandHandler<AddDeviceCommand, Guid>
 {
     public async Task<Guid> HandleAsync(AddDeviceCommand command)
@@ -19,8 +18,6 @@ internal sealed class AddDeviceHandler(
         {
             throw new OrganizationNotFoundException();
         }
-
-        // Jeszcze nie ma sprawdzania czy kategoria istnieje bo nie ma tabeli z kategoriami
 
         var device = Device.Add(
             command.Name,

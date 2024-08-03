@@ -26,6 +26,7 @@ public sealed class GetDeviceAssignmentByIdHandler : IQueryHandler<GetDeviceAssi
             deviceAssignment.Id,
             deviceAssignment.DeviceId,
             deviceAssignment.EmployeeId,
+            deviceAssignment.OrganizationId,
             deviceAssignment.IssueDate,
             deviceAssignment.ReturnDate,
             deviceAssignment.ConditionOnReturn

@@ -14,6 +14,7 @@ namespace DotNetBoilerplate.Application.DeviceAssignments.Get
                 d.Id, 
                 d.DeviceId,
                 d.EmployeeId, 
+                d.OrganizationId,
                 d.IssueDate, 
                 d.ReturnDate,
                 d.ConditionOnReturn

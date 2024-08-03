@@ -29,9 +29,12 @@ internal sealed class AssignDeviceHandler(
             throw new EmployeeNotFoundException();
         }
 
+        var organizationId = employee.OrganizationId;
+
         var deviceAssignment = DeviceAssignment.Assign(
             command.DeviceId,
             command.EmployeeId,
+            organizationId,
             clock.Now(),
             command.ReturnDate
         );
