@@ -17,7 +17,7 @@ internal static class DeviceAssignmentsEndpoints
             .MapEndpoint<GetAllDeviceAssignmentsEndpoint>()
             .MapEndpoint<GetDeviceAssignmentByIdEndpoint>()                        
             .MapEndpoint<ReturnDeviceByIdEndpoint>()
-            .MapEndpoint<GetAllDeviceAssignmentsByOrganizationIdEndpoint>();
+            .MapEndpoint<GetAllDeviceAssignmentsByOrganizationIdEndpoint>()
             .MapEndpoint<ModifyDeviceAssignmentEndpoint>();
     }
 }
